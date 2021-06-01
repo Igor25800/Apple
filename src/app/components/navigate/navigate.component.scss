@@ -1,0 +1,116 @@
+@import '../../../mixin.scss';
+@font-face {
+  font-family: "apple";
+  src: url("/assets/font/9651.ttf");
+}
+
+.block{
+    width: 100%;
+    background: #f8f8f8;
+    padding: 2rem;
+    @include center()
+   
+}
+
+.card-apple{
+  margin-right: 2%;
+  @include center();
+  flex-direction: column;
+}
+
+.font-title{
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  text-align: center;
+  margin-top: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.img {
+  height: 3.5rem;
+}
+
+.active {
+  color: red;
+}
+
+.example-card {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  
+}
+
+.example-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+.text{
+  text-align: center;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+}
+.example-card{
+  transition: all 0.6s;
+}
+
+.width{
+  width: 220px;
+}
+
+.text-wigle {
+  margin-right: 1rem;
+
+}
+
+.mat-card-title{
+  text-align: center;
+}
+.center{
+  opacity: 0;
+  transition: all .1s;
+}
+
+mat-card:hover .center{
+  opacity: 100;
+}
+
+.tab-content{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+mat-slider {
+  width: 200px;
+}
+
+.col-3 {
+  flex: 0 0 25%;
+  max-width: 20%;
+}
+.example-section{
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  width: 100%;
+  justify-content: center
+}
+h5 {
+  font-family: SF Pro Display;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+  font-size: 24px;
+  letter-spacing: 1.5px;
+  color: #000;
+  margin-bottom: 10px;
+}

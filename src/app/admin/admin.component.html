@@ -1,0 +1,20 @@
+<div class="admin container-fluid" style="margin-top: 20px;">
+    <div class="row">
+      <div class="col-3">
+        <div class="nav flex-column nav-pills" >
+          <button  class="nav-link" [routerLink]="[ 'category' ]" routerLinkActive="active" mat-raised-button>Category</button>
+          <button  class="nav-link" [routerLink]="[ 'products' ]" routerLinkActive="active" mat-raised-button >Products</button>
+          <button  class="nav-link" [routerLink]="[ 'detali' ]" routerLinkActive="active" mat-raised-button >Detali-products</button>
+          <button  class="nav-link" [routerLink]="[ 'carusel' ]" routerLinkActive="active" mat-raised-button >Carusel</button>
+          <button  class="nav-link" [routerLink]="[ 'gallery' ]" routerLinkActive="active" mat-raised-button >Gallery</button>
+          <button  class="nav-link" [routerLink]="[ 'comments' ]" routerLinkActive="active" mat-raised-button >Comments</button>
+          <button  class="nav-link" [routerLink]="[ 'order' ]" routerLinkActive="active" mat-raised-button >Orders</button>
+       </div>
+      </div>
+      <div class="col-9">
+        <div class="tab-content">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+    </div>
+  </div>

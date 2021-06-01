@@ -1,0 +1,29 @@
+ <form [formGroup]="form">
+
+  <mat-form-field appearance="fill">
+    <mat-select formControlName='nova'>
+      <mat-option (click)="add(food)" *ngFor="let food of city" [value]="food">
+        {{food}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> 
+
+
+
+  <mat-form-field appearance="fill">
+    <mat-label>Оберіть Адрессу</mat-label>
+    <mat-select formControlName='novaMaps'>
+  
+      <mat-option (click)="initMap(food)" *ngFor="let food of arrNova" [value]="food.Description">
+        {{food.Description}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field> 
+  
+ 
+  <div class="full" id="map" #map></div>
+  
+
+ </form>
+
+

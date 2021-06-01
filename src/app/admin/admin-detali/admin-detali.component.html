@@ -1,0 +1,95 @@
+<form (ngSubmit)="formGroup(selection.value)" [formGroup]="selection"  class="example-form">
+    <mat-form-field appearance="fill"  >
+      <mat-label>Favorite food</mat-label>
+      <mat-select  formControlName="detali">
+        <mat-option (click)="detali(item)" *ngFor="let item of arr" [value]="item.nameEN">
+          {{item.nameUa}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+
+    <div [ngSwitch]="detal">
+    <div *ngSwitchCase="'description'">
+     
+      <app-description [arrNav]="arrNav"  [arrApple]="arrApple"> </app-description>
+
+    </div>
+    <div *ngSwitchCase="'character'">
+      <mat-form-field appearance="fill">
+        <mat-label>Категорії</mat-label>
+        <mat-select    formControlName="select" >
+          <mat-option>-- None --</mat-option>
+          <mat-optgroup  *ngFor="let group of arrNav" [label]="group.nameEN"  >
+            <mat-option (click)="add(item)"  *ngFor="let item of arrApple | filter :group.nameEN " [value]="item.category"    >
+              {{item.title}} {{item.memory}} {{item.color}}
+            </mat-option>
+          </mat-optgroup>
+        </mat-select>
+      </mat-form-field>
+
+        <div [ngSwitch]="category">
+      <div *ngSwitchCase="'iphone'">
+        <form (ngSubmit)="formGroup(selection.value)"  [formGroup]="iphone"  class="example-form form">
+          <div class="col-6 form-group"  *ngFor="let item of arrIphone">
+              <mat-form-field class="example-full-width">
+                <mat-label>{{item}}</mat-label>
+                <input type="text"  [formControlName]='item' matInput  name="weigh"  >
+            </mat-form-field>
+            </div>
+            <button [disabled]='iphone.invalid || isdisabled' type="submit" class="margin" mat-raised-button color= 'primary' [color]="isBtn ? 'accent': 'primary' " [textContent]="isBtn? 'Save' : 'Add'" >Add</button>
+          </form>
+        </div>
+
+      <div *ngSwitchCase="'mac'">
+        <form  (ngSubmit)="formGroup(selection.value)"  [formGroup]="mac"  class="example-form form">
+          <div class="col-6 form-group"  *ngFor="let item of arrMac">
+            <mat-form-field class="example-full-width">
+              <mat-label>{{item}}</mat-label>
+              <input type="text"  [formControlName]='item' matInput  name="weigh"  >
+          </mat-form-field>
+          </div>
+          <button [disabled]='mac.invalid || isdisabled' type="submit" class="margin" mat-raised-button color= 'primary'  [color]="isBtn ? 'accent': 'primary' " [textContent]="isBtn? 'Save' : 'Add'">Add</button>
+      </form>
+      </div>
+
+      <div *ngSwitchCase="'apple watch'">
+        <form (ngSubmit)="formGroup(selection.value)" [formGroup]="watch"  class="example-form form">
+        <div class="col-6 form-group"  *ngFor="let item of arrWatch">
+          <mat-form-field class="example-full-width">
+            <mat-label>{{item}}</mat-label>
+            <input type="text"  [formControlName]='item' matInput  name="weigh"  >
+        </mat-form-field>
+        </div>
+        <br>
+      </form>
+      <button [disabled]='watch.invalid || isdisabled' type="submit" class="margin" mat-raised-button [color]="isBtn ? 'accent': 'primary' " [textContent]="isBtn? 'Save' : 'Add'" >Add</button>
+      </div>
+      
+      <div *ngSwitchCase="'airpods'">
+        <form (ngSubmit)="formGroup(selection.value)" [formGroup]="airpods"  class="example-form form">
+          <div class="col-6 form-group"  *ngFor="let item of arrAirpods">
+            <mat-form-field class="example-full-width">
+              <mat-label>{{item}}</mat-label>
+              <input type="text"  [formControlName]='item' matInput  name="weigh"  >
+          </mat-form-field>
+          </div>
+          <br>
+        </form>
+        <button [disabled]='airpods.invalid || isdisabled' type="submit" class="margin" mat-raised-button [color]="isBtn ? 'accent': 'primary' " [textContent]="isBtn? 'Save' : 'Add'" >Add</button>
+      </div>
+     
+      </div>
+
+      
+     
+
+    </div>
+    </div>
+    
+  
+
+  </form>
+
+

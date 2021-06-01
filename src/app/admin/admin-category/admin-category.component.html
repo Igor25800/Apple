@@ -1,0 +1,115 @@
+<mat-tab-group>
+  <mat-tab label="Навігація"> 
+    <app-admin-navs></app-admin-navs>
+  </mat-tab>
+  <mat-tab label="Категорія">
+        
+<form (ngSubmit)="signIn(signInForm.value)" [formGroup]="signInForm"  class="example-form">
+  <mat-form-field appearance="fill"  >
+    <mat-label>Favorite food</mat-label>
+    <mat-select  formControlName="select">
+      <mat-option  *ngFor="let food of arrOpntio" [value]="food.nameEN.toLowerCase()">
+        {{food.nameEN}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+    <mat-form-field class="example-full-width">
+        <mat-label>Title</mat-label>
+        <input formControlName='title' matInput  name="title"  >
+      </mat-form-field>
+      <div [hidden]="signInForm.valid || signInForm.untouched" class="alert alert-danger" role="alert">Заповінсть Форму</div>
+      <label for="file-upload" class="custom-file-upload"> Виберіть Картинку </label>
+        <input formControlName='img' (change)="uploadFile($event)"  id="file-upload" type="file"/>
+      <br>
+      <br>
+      <mat-progress-bar #id  mode="determinate" [value]="uploadProgress|async"></mat-progress-bar>
+    
+  
+      <button class="margin"  [disabled]=" isdisabled || !signInForm.valid  || signInForm.value.select.length === 0" *ngIf="!categoryDoc  " (click)="add()" mat-raised-button color="primary">add</button>
+      <button [disabled]="isdisabled" class="margin" *ngIf="categoryDoc" (click)="save()" mat-raised-button color="accent">save</button>
+    </form>
+
+
+    <mat-accordion  *ngFor="let col of arrCate">
+     <mat-expansion-panel (opened)="panelOpenState = true"
+                           (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title> {{col}} </mat-panel-title>
+        </mat-expansion-panel-header>
+        <table class="table block">
+          <thead>
+              <th>#</th>
+              <th>Name</th>
+              <th>Images</th>
+              <th>Category</th>
+              <th>Edit</th>
+              <th>Delete</th>
+          </thead>
+          <tbody>
+              <tr  *ngFor="let item of arrCategory | filter : col  let i=index" >
+                <td> {{i + 1}}</td>
+                <td> {{item.title}}</td>
+                <td> 
+                  <img style=" height: 50px;" [src]="item?.img" alt=""> 
+                </td>
+                <td> <b>{{item.category}}</b> </td>
+                <td>
+                  
+                  <button class="res" (click)="edit(item)"  mat-raised-button  color="accent"  >Edit</button>
+                </td>
+                <td>
+                  <button   (click)="deleteCategory(item)" mat-raised-button color="warn">Delete</button>
+                </td>
+              </tr>
+          </tbody>
+      </table> 
+      </mat-expansion-panel>
+     
+    </mat-accordion>
+  
+
+  
+
+  </mat-tab>
+ 
+</mat-tab-group>
+
+
+
+
+
+
+
+<!-- <table mat-table [dataSource]="masi" class="mat-elevation-z8">
+
+<ng-container matColumnDef="position">
+  <th mat-header-cell *matHeaderCellDef> # </th>
+  <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+</ng-container>
+
+
+<ng-container matColumnDef="name">
+  <th mat-header-cell *matHeaderCellDef> Name </th>
+  <td mat-cell *matCellDef="let element"> {{element.title}} </td>
+</ng-container>
+
+
+<ng-container matColumnDef="weight">
+  <th mat-header-cell *matHeaderCellDef> Edit </th>
+  <td mat-cell *matCellDef="let element"> 
+    <button (click)="edit(item)" class="btn btn-warning" type="button">Edit</button> 
+  </td>
+</ng-container>
+
+
+<ng-container matColumnDef="symbol">
+  <th mat-header-cell *matHeaderCellDef> Delete </th>
+  <td mat-cell *matCellDef="let element"> 
+    <button (click)="deleteCategory(item)" mat-raised-button color="warn">Delete</button>
+  </td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table> -->

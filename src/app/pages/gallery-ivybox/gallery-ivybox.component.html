@@ -1,0 +1,11 @@
+<div class="section__block user-gallery">
+    <div class="container">
+  
+    </div>
+    <div class="user-gallery__list">
+        <div  lightbox-group >
+           <img  class="pointer" *ngFor="let item of arrGallery" [src]="item.img" lightbox  backgroundOpacity=0.9  closeButtonText='Закрити'/>
+    </div>
+    </div>
+
+

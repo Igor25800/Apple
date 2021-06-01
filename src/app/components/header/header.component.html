@@ -1,0 +1,49 @@
+<nav class="nav">
+  <div>
+  <div class="menu-header">
+   
+  <div class="nav-item nav-iteam-hiden item">
+    <a  [routerLink]="[ 'home' ]" routerLinkActive="active" class="nav-link nav-link-apple img  apple-mobile"> </a>
+    <li class="nav-item apple-mob">
+      <div  (click)="event.modal()" class="nav-link nav-link-bag cursor im1g apple-mob"> 
+        <i *ngIf="count > 0" class="header__cart-count">{{count}}</i>
+      </div>
+    </li>
+  </div>
+  
+  </div>
+  <header>
+    <div [class.active]="hiden" (click)="togle()" class="menu-btn">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </header>
+</div>
+
+    <ul [class.active]="hiden" class="menu">
+          <li  class="nav-item nav-iteam-hiden ">
+            <a (click)="togle()"  [routerLink]="[ 'home' ]" routerLinkActive="active" class="nav-link nav-link-apple img "> </a>
+          </li>
+          <li class="nav-item " *ngFor="let item of arrNav; let i=index" >
+            <a (click)="togle()" class="nav-link" [routerLink]="[ 'category/'+item.nameEN+'' | lowercase  ]" routerLinkActive="active">{{item.nameEN}}</a>
+          </li>
+          <li class="nav-item apple-mac">
+            <div   (click)="event.modal()" class="nav-link nav-link-bag cursor im1g  apple-mac"> 
+              <i *ngIf="count > 0" class="header__cart-count">{{count}}</i>
+            </div>
+          </li>
+          <li class="nav-item ">
+            <!-- <a   [routerLink]="[ 'admin' ]" routerLinkActive="active" class="nav-link nav-link-bag cursor">Кабінет</a> -->
+            <a  (click)="openDialog()" style="cursor: pointer;"  class="nav-link nav-link-bag cursor">Кабінет</a>
+            
+          </li>
+      </ul>
+    </nav>
+
+    <app-modal-basket #event></app-modal-basket>
+
+
+
+
+ 

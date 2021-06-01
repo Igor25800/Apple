@@ -1,0 +1,16 @@
+<div class="section__block user-gallery">
+    <div class="container">
+    <div class="user-gallery__title mobile">Фото клієнтів</div>
+    </div>
+    <div class="user-gallery__list">
+    <div *ngFor="let item of arrGallery">
+        <img [src]="item.img">
+</div>
+
+   
+
+    </div>
+    <div class="text-center">
+        <a class="btn btn-primary mt-5" [routerLink]="[ '/galleryUser' ]" routerLinkActive="active"> Дивитися всі фото</a>
+    </div>
+</div>

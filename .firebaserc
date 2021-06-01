@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "apple-e5946": {
+      "hosting": {
+        "Apple": [
+          "apple-e5946"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "apple-e5946"
+  }
+}

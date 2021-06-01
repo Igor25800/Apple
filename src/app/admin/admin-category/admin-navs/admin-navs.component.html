@@ -1,0 +1,43 @@
+<h5>Зробив статичні , не видаляв бо хочу потім якось доробити</h5>
+
+<form (ngSubmit)="form(formGroup.value)" [formGroup]="formGroup"  class="example-form">
+   
+    <mat-form-field class="example-full-width">
+        <mat-label>nameEn</mat-label>
+        <input formControlName='nameEN' matInput  name="nameEn"  >
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>nameUa</mat-label>
+        <input formControlName='nameUA' matInput  name="nameUA"  >
+    </mat-form-field>
+    
+        <button [disabled]="formGroup.invalid" [disabled]='true' (click)="addNavs()" class="margin"  mat-raised-button  [color]="isText? 'accent': 'primary' " [textContent]="isText? 'Save' : 'Add' " ></button>
+  
+</form>
+
+
+
+
+<table class="table block">
+    <thead>
+        <th>id</th>
+        <th>nameUA</th>
+        <th>nameEN</th>
+        <th>edit</th>
+        <th>delete</th>
+    </thead>
+    <tbody>
+        <tr  *ngFor="let item of arrNavs; let i=index" >
+          <td> {{item.id}}</td>
+          <td> {{item.nameUA}}</td>
+          <td> {{item.nameEN}}</td>
+          <td>
+            <button [disabled]='true' class="res" (click)="editNavs(item)"  mat-raised-button  color="accent">Edit</button>
+          </td>
+          <td>
+            <button [disabled]='true' (click)="deleteNavs(item)" mat-raised-button color="warn">Delete</button>
+          </td>
+        </tr>
+    </tbody>
+</table> 
+

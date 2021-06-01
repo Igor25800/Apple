@@ -1,0 +1,275 @@
+*{
+  padding: 0;
+  margin: 0%;
+  box-sizing: border-box;
+}
+
+.img{
+  width: 50px;
+  height: 50px;
+  background-size: 100% 100%;
+  background-image: url('/assets/images/header/images/globalnav_apple_image__cxwwnrj0urau_large.svg');
+}
+
+
+
+.im1g {
+  width: 50px;
+  height: 50px;
+  background-size: 100% 100%;
+  background-image: url('/assets/images/header/images/globalnav_bag_image__bmix8075eg4i_small.svg');
+  cursor: pointer;
+  transition: all .2s;
+}
+
+
+.carousel-item{
+  height: 40rem;
+}
+
+.menu-header{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3rem;
+  padding: 0.3rem;
+  background-color: #000;
+  transition: transform 0.5s; 
+  z-index: 0;
+  
+}
+.menu > li {
+  position: relative;
+  display: flex;
+  color: white !important;
+  z-index: 1;
+  
+  
+
+}
+
+
+dl, ol, ul {
+  margin-top: 0;
+  margin-bottom: 0rem;
+}
+
+.menu {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 3rem;
+}
+
+a{
+  color: white;
+  font-size: 14px;
+  font-family: "SF Pro Text","Myriad Set Pro","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+a:hover{
+  color: rgb(175, 175, 175);
+}
+
+.item{
+  display:  none;
+}
+.border-botom{
+  width: 10px ;
+  height: 10px;
+  background-color: red;
+  transition: all .6s;
+}
+
+.border-botom :hover {
+  width: 50px;
+  height: 10px;
+  background-color: rgb(0, 0, 0);
+}
+
+i {
+  font-style: normal;
+  position: absolute;
+  width: 23px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #ef456a;
+  text-align: center;
+  line-height: 25px;
+  color: #fff;
+  font-size: 14px;
+  right: 0px;
+  top: 3px;
+  font-family: SF Pro Display;
+  font-weight: 700;
+  box-shadow: 0 0 5px rgb(0 0 0 / 28%);
+}
+
+
+.apple-mobile {
+  display: none;
+  position: absolute;
+    top: 0px;
+    left:  44%;
+}
+
+
+
+
+
+@media screen and (max-width: 768px) {
+  .menu-header{
+    display: flex;
+    justify-content: center;
+    z-index: 18;
+  }
+
+  .apple-mobile {
+    display: block;
+  
+  }
+
+  .apple-mob {
+    position: absolute;
+    top: 0;
+    left: 92%;
+  }
+  
+
+  .apple-mac {
+    display: none;
+  }
+
+  .item{
+    display:  block;
+  }
+
+  .nav{
+    display: flex;
+    align-items: center;
+    height: 2.5rem;
+  }
+
+  .nav-list{
+    display: none;  
+  }
+
+  header {
+    padding: 0.5rem;
+    z-index: 20;
+    position: absolute;
+    top: 0px;
+  }
+  
+  .menu-btn {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    z-index:19;
+    overflow: hidden;
+  }
+  
+  .menu-btn span {
+    width: 30px;
+    height: 2px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(255, 255, 255);
+    transition: all 0.5s;
+  }
+  
+  .menu-btn span:nth-of-type(1) {
+    top: calc(50% - 3px);
+  }
+
+  .menu-btn span:nth-of-type(2) {
+    top: calc(50% - 10px);
+  }
+  .menu-btn span:nth-of-type(3) {
+    top: calc(50% + 5px);
+  }
+  
+  .menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    background-color: rgb(19, 17, 17);
+    transform: translateX(-100%);
+    transition: transform 0.5s; 
+    display: block;
+    z-index: 18;
+  }
+  
+  .menu.active {
+    transform: translateX(0);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    z-index: 18;
+
+    .menu-header{
+      position: relative;
+    }
+
+  }
+  
+  .menu li {
+    list-style-type: none;
+  }
+  
+  .menu-btn.active span:first-of-type {
+    transform: translateX(100%);
+  }
+  
+  .menu-btn.active span:nth-of-type(2) {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(45deg);
+  }
+  
+  .menu-btn.active span:nth-of-type(3) {
+    top: 50%;
+    transform: translate(-50%, -50%) rotate(-45deg);
+  }
+
+}
+
+
+
+
+
+@media screen and (max-width: 652px) {
+  .apple-mob {
+    position: absolute;
+    top: 0;
+    left: 89%;
+  }
+}
+@media screen and (max-width: 534px) {
+  .apple-mob {
+    position: absolute;
+    top: 0;
+    left: 87%;
+  }
+}
+@media screen and (max-width: 404px) {
+  .apple-mob {
+    position: absolute;
+    top: 0;
+    left: 85%;
+  }
+}
+@media screen and (max-width: 340px) {
+  .apple-mob {
+    position: absolute;
+    top: 0;
+    left: 83%;
+  }
+}
+

@@ -1,0 +1,49 @@
+<form (ngSubmit)="addCarysel(formGroup.value)" [formGroup]="formGroup"  class="example-form">
+  
+   
+    <mat-form-field class="example-full-width">
+           <mat-label>Url</mat-label>
+           <input formControlName='url'  matInput  name="url"  >
+       </mat-form-field>
+
+   
+       <label for="file-carysel" class="custom-file-upload"> Виберіть Картинку </label>
+       <input formControlName='img'  (change)="uploadFile($event)"  id="file-carysel" type="file"/>
+     <br>
+     <br>
+     <mat-progress-bar #id  mode="determinate" [value]="(uploadProgress|async)"></mat-progress-bar>
+      <br>
+    <button [disabled]='isdisabled || formGroup.invalid' type="submit" class="margin" mat-raised-button [color]="isText? 'accent': 'primary' " [textContent]="isText? 'Save' : 'Add'"></button>
+       
+       
+   </form>
+
+   <br>
+
+   <table class="table block">
+    <thead>
+        <th>#</th>
+        <th>Img</th>
+        <th>Url</th>
+        <th>Edit</th>
+        <th>Delete</th>
+       
+    </thead>
+    <tbody>
+        <tr  *ngFor="let item of arrCarysel let i=index" >
+          <td>{{i+1}}</td>
+          <td> 
+            <img style=" height: 50px;" [src]="item.img" alt=""> 
+          </td>
+          <td>{{item.url}}</td>
+         
+          <td>
+            <button class="res" (click)="editCarysel(item)"  mat-raised-button  color="accent">Edit</button>
+          </td>
+          <td>
+            <button   (click)="deleteCarysel(item)" mat-raised-button color="warn">Delete</button>
+          </td>
+          
+        </tr>
+    </tbody>
+  </table> 

@@ -1,0 +1,35 @@
+<form  [formGroup]="select"  class="example-form">
+
+<mat-form-field appearance="fill">
+    <mat-label>Категорії</mat-label>
+    <mat-select    formControlName="select" >
+      <mat-option>-- None --</mat-option>
+      <mat-optgroup  *ngFor="let group of arrNav" [label]="group.nameEN"  >
+        <mat-option (click)="add(item)"  *ngFor="let item of arrApple | filter :group.nameEN " [value]="item.category"    >
+          {{item.title}} {{item.memory}} {{item.color}}
+        </mat-option>
+      </mat-optgroup>
+    </mat-select>
+  </mat-form-field>
+</form>
+
+  <form (ngSubmit)="formGroup(description.value)" [formGroup]="description"  class="example-form">
+    <mat-form-field class="example-full-width">
+        <mat-label>Title</mat-label>
+        <input formControlName='title'  matInput  name="title"  >
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Textarea</mat-label>
+        <textarea formControlName='textarea' matInput></textarea>
+    </mat-form-field>
+
+    <label for="file" class="custom-file-upload"> Виберіть Картинку </label>
+    <input formControlName='img'  (change)="uploadFile($event)"  id="file" type="file"/>
+  <br>
+  <br>
+  <mat-progress-bar #id  mode="determinate" [value]="(uploadProgress|async)"></mat-progress-bar>
+   <br>
+    <button [disabled]='isdisabled || description.invalid' type="submit" class="margin" mat-raised-button [color]="isText? 'accent': 'primary' " [textContent]="isText? 'Save' : 'Add'"></button>
+</form>
+
+

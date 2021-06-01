@@ -1,0 +1,14 @@
+<h2>Login Admin</h2>
+<form class="example-form" [formGroup]="loginGroup">
+    <mat-form-field class="example-full-width">
+      <mat-label>Loggin</mat-label>
+      <input matInput  formControlName="login">
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+      <mat-label>Password</mat-label>
+      <input matInput  formControlName="password">
+    </mat-form-field>
+
+
+    <button (click)="Login()" mat-raised-button color="primary">login</button>
+  </form>

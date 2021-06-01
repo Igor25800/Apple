@@ -1,0 +1,21 @@
+[debug] [2021-06-01T14:48:57.566Z] ----------------------------------------------------------------------
+[debug] [2021-06-01T14:48:57.568Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Игорь\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js open
+[debug] [2021-06-01T14:48:57.568Z] CLI Version:   9.12.0
+[debug] [2021-06-01T14:48:57.568Z] Platform:      win32
+[debug] [2021-06-01T14:48:57.568Z] Node Version:  v14.15.4
+[debug] [2021-06-01T14:48:57.569Z] Time:          Tue Jun 01 2021 17:48:57 GMT+0300 (Восточная Европа, летнее время)
+[debug] [2021-06-01T14:48:57.569Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-06-01T14:48:57.574Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-06-01T14:48:57.575Z] > authorizing via signed-in user (fedorigor45@gmail.com)
+[debug] [2021-06-01T14:48:57.576Z] [iam] checking project apple-e5946 for permissions ["firebase.projects.get"]
+[debug] [2021-06-01T14:48:57.577Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/apple-e5946:testIamPermissions  
+ {"permissions":["firebase.projects.get"]}
+[debug] [2021-06-01T14:48:58.374Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Tue, 01 Jun 2021 14:48:57 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=667","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-06-01T14:48:58.375Z] > refreshing access token with scopes: []
+[debug] [2021-06-01T14:48:58.375Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-06-01T14:48:58.529Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","cache-control":"no-cache, no-store, max-age=0, must-revalidate","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Tue, 01 Jun 2021 14:48:57 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-06-01T14:48:58.540Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/apple-e5946 [none]
+[debug] [2021-06-01T14:48:58.808Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/apple-e5946 200
+[debug] [2021-06-01T14:48:58.808Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/apple-e5946 {"projectId":"apple-e5946","projectNumber":"936713525304","displayName":"Apple","name":"projects/apple-e5946","resources":{"hostingSite":"apple-e5946","realtimeDatabaseInstance":"apple-e5946-default-rtdb","storageBucket":"apple-e5946.appspot.com","locationId":"us-central"},"state":"ACTIVE"}

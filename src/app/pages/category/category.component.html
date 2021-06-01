@@ -1,0 +1,76 @@
+<app-navigate></app-navigate>
+
+<h1>{{category | titlecase}}</h1>
+<div class="admin container-fluid" style="margin-top: 20px; display: flex; justify-content: center;">
+  <div class="row">
+    <div class="col-3">
+      <!-- <div class="filter-param">
+          <h5 class="h5"> Ціна</h5>
+          <mat-slider aria-label="unit(s)"></mat-slider>
+          <h5>Об'єм пам'яті</h5>
+       </div> -->
+      <!-- <app-filter 
+          *ngIf="filterArr.memory.length" 
+          [filterArr]='filterFields.memory' 
+          [title]="'Memory'"
+          (selectedFields)="selectedFieldsMemory($event)"
+       > </app-filter>
+       <app-filter  
+          *ngIf="filterArr.colors.length" 
+          [filterArr]='filterFields.colors'
+          [title]="'Colors'"
+          (selectedFields)="selectedFieldsColors($event)"
+       > </app-filter> -->
+      <!-- <input type="range"> -->
+      <nav class="breadcrumbs" itemprop="breadcrumb">
+        <a href="/">AppleRoom.ua</a> <i>/</i> <span>{{category |titlecase}} </span>
+      </nav>
+    
+      <h5>Ціна</h5>
+      <div class="inp">
+        <input class="filters"  [(placeholder)]="rangeValues[0]" (input)="onChangeRange($event.target.value, 0)">$ -
+        <input class="filters" [(placeholder)]="rangeValues[1]" (input)="onChangeRange($event.target.value, 1)">$
+      </div>
+      <p-slider class="param" [(ngModel)]="rangeValues" [range]="true" [min]='pricaRange.min' [max]='pricaRange.max' (onSlideEnd)="handleChange($event)"></p-slider>
+
+      <app-filter [filterArr]='filterArr.memory' [title]="'Обєм памяті'"  (selectedFields)="selectedFieldsMemory($event, 'memory')"></app-filter>
+      <app-filter [filterArr]='filterArr.colors' [title]="'Колір'" (selectedFields)="selectedFieldsMemory($event, 'color')"></app-filter>
+      <app-filter [filterArr]='filterArr.nameProduct' [title]="'Категорія'"  (selectedFields)="selectedFieldsMemory($event, 'categoryProduct')"></app-filter>
+      <app-filter [filterArr]='filterArr.display'  [title]="'Діагональ екрану'"   (selectedFields)="selectedFieldsMemory($event, 'display')" ></app-filter>
+      <app-filter [filterArr]='filterArr.processor'  [title]="'Процесор'"   (selectedFields)="selectedFieldsMemory($event, 'processor')" ></app-filter>
+      <app-filter [filterArr]='filterArr.charging'  [title]="'Підтримує бездротову зарядку кейса'"   (selectedFields)="selectedFieldsMemory($event, 'charging')" ></app-filter>
+      <app-filter [filterArr]='filterArr.year'  [title]="'Рік випуску'"   (selectedFields)="selectedFieldsMemory($event, 'year')" ></app-filter>
+
+    </div>
+    <div class="col-9">
+      <!-- <h1 *ngIf="!arrApple.length">Loading...</h1> -->
+      <div class="tab-content">
+        <mat-card class="example-card" *ngFor="let item of arrApple; let i=index">
+          <mat-card-header>
+          </mat-card-header>
+          <!-- <mat-spinner [hidden]="hiden"  (load)="img(item.img)"></mat-spinner> -->
+          <!-- <img (load)="hideLoader()"  mat-card-image class="width"  [src]="isLoader ? '../../../assets/images/loader.png' : item.img" alt="Photo of a Shiba Inu"> -->
+          <!-- <img (load)="hideLoader()"  mat-card-image class="width"  [src]="item.img" alt="Photo of a Shiba Inu" [style.backgroundImage]="isLoader ? 'url(../../../assets/images/loader.png)' : ''"> -->
+          <img  mat-card-image class="width"  [src]="item.img" alt="Photo of a Shiba Inu">
+          <mat-card-content>
+          
+            <!-- <mat-card-title  
+              [routerLink]="[ '/category/'+item.category+ '/' +item.categoryProduct+  '/' + item.categoryProduct | lowercase | replacement  ]" 
+              routerLinkActive="active" 
+              [queryParams]="{ memory: item.memory, color: item.color, categoryProduct:  item.categoryProduct}" 
+              > -->
+            <mat-card-title
+              [routerLink]="[ '/category/'+item.category  ,item.categoryProduct | replacement| lowercase  , item.uuid | lowercase  ]"
+              routerLinkActive="active">
+              {{item.title}} {{item.memory |nameString}} {{item.color}} </mat-card-title>
+            <p class="text"> <b class="text-wigle">$ {{item.price / item.dollarPrice | fixed}}</b> {{item.price |kyrs }}
+              грн</p>
+          </mat-card-content>
+          <mat-card-actions class="center">
+            <button (click)="localAdd(item)" color="primary" mat-raised-button>Купити</button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

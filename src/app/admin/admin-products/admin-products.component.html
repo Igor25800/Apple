@@ -1,0 +1,112 @@
+<form (ngSubmit)="addApple(formGroup.value)" [formGroup]="formGroup"  class="example-form">
+ <mat-form-field appearance="fill">
+    <mat-label>Категорії</mat-label>
+    <mat-select    formControlName="selectValue" >
+      <mat-option>-- None --</mat-option>
+      <mat-optgroup  *ngFor="let group of arrOpntio" [label]="group.nameEN"  >
+        <mat-option (click)="add(item)"  *ngFor="let item of arrOpntio2 | filter :group.nameEN " [value]="item.title"    >
+          {{item.title}}
+        </mat-option>
+      </mat-optgroup>
+    </mat-select>
+  </mat-form-field>
+
+ <mat-form-field class="example-full-width">
+        <mat-label>Title</mat-label>
+        <input formControlName='title'  matInput  name="title"  >
+    </mat-form-field>
+   
+        <mat-form-field class="example-full-width">
+            <mat-label>Price</mat-label>
+            <input type="number"  formControlName='price' matInput  name="price"  >
+        </mat-form-field>
+   
+   
+ 
+
+    <div class="row">
+      <div class="col-6 form-group">
+        <mat-form-field class="example-full-width">
+          <mat-label>Memory</mat-label>
+          <input type="text"  formControlName='memory' matInput  name="price"  >
+      </mat-form-field>
+      </div>
+      <div class="col-6 form-group">
+        <mat-form-field class="example-full-width">
+          <mat-label>Color</mat-label>
+          <input type="text"  formControlName='color' matInput  name="price"  >
+      </mat-form-field>
+      </div>
+     
+      <!-- <div class="col-6 form-group "*ngFor="let item of dynControls" >
+        <mat-form-field class="example-full-width">
+          <mat-label>{{item}}</mat-label>
+          <input type="text"  [formControlName]='item' matInput  name="price"  >
+      </mat-form-field>
+      </div> -->
+     
+  </div>
+
+
+    <label for="file-upload" class="custom-file-upload"> Виберіть Картинку </label>
+    <input formControlName='img'  (change)="uploadFile($event)"  id="file-upload" type="file"/>
+  <br>
+  <br>
+  <mat-progress-bar #id  mode="determinate" [value]="(uploadProgress|async)"></mat-progress-bar>
+   
+    <button [disabled]='isdisabled' type="submit" class="margin" mat-raised-button [color]="isText? 'accent': 'primary' " [textContent]="isText? 'Save' : 'Add'"></button>
+    
+    
+</form>
+
+<!-- <button   (click)="addModal()" mat-raised-button color="warn">Props</button>
+<button mat-button (click)="openDialog()">Критерії Товару</button> -->
+
+
+<mat-accordion  *ngFor="let col of arrOpntio2">
+
+  <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <mat-expansion-panel-header><mat-panel-title style="text-align: center;"> {{col.title}}</mat-panel-title>
+      <mat-panel-description></mat-panel-description>
+    </mat-expansion-panel-header>
+    <table class="table block">
+      <thead>
+          <th>#</th>
+          <th>Img</th>
+          <th>title</th>
+          <th>Price</th>
+          <th>dolar</th>
+          <th>Memory</th>
+          <th>Color</th>
+          <th>Category</th>
+          <th>CategoryProduct</th>
+          <th>Edit</th>
+          <th>Delete</th>
+         
+      </thead>
+      <tbody>
+          <tr  *ngFor="let item of arrApple | filterProducts: col.title   let i=index" >
+            <td>{{i+1}}</td>
+            <td> 
+              <img style=" height: 50px;" [src]="item.img" alt=""> 
+            </td>
+            <td>{{item.title}}</td>
+            <td>{{item.price | kyrs}} грн</td>
+            <td>{{item.dollarPrice }}</td>
+            <td>{{item.memory}} </td>
+            <td>{{item.color}} </td>
+            <td>{{item.category}}</td>
+            <td>{{item.categoryProduct}}</td>
+            <td>
+              <button class="res" (click)="editApple(item)"  mat-raised-button  color="accent">Edit</button>
+            </td>
+            <td>
+              <button   (click)="deleteApple(item)" mat-raised-button color="warn">Delete</button>
+            </td>
+            
+          </tr>
+      </tbody>
+    </table> 
+  </mat-expansion-panel>
+</mat-accordion>
+

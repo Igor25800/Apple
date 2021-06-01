@@ -1,0 +1,163 @@
+@font-face {
+    font-family: "apple";
+    src: url("/assets/font/9651.ttf");
+  }
+
+.section__block {
+    margin-top: 14px;
+}
+
+.user-gallery__title {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-family: 'apple';
+    color: #000;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 26px;
+    // font-weight: bold;
+
+    letter-spacing: 1px;
+
+}
+
+.user-gallery__list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.text-center {
+    text-align: center!important;
+}
+
+.user-gallery__list div {
+    margin-left: 15px;
+    padding: 1.5px;
+}
+
+.user-gallery__list img {
+    width: 16%;
+    height: auto;
+    vertical-align: top;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    height: auto;
+    vertical-align: top;
+}
+
+.text-center {
+    text-align: center!important;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 1524px) {
+    
+
+    div {
+    //   flex: 0 0 49.6666% !important;
+      padding: 1.5px;
+  }
+   img{
+    width: 19% !important;
+  }
+ 
+}
+
+@media screen and (max-width: 1032px) {
+    img{
+        width: 23% !important;
+      }
+}
+@font-face {
+    font-family: "apple";
+    src: url("/assets/font/9651.ttf");
+  }
+
+.section__block {
+    margin-top: 14px;
+}
+
+.user-gallery__title {
+    font-weight: 800;
+    text-transform: uppercase;
+    font-family: 'apple';
+    color: #000;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 26px;
+    // font-weight: bold;
+
+    letter-spacing: 1px;
+
+}
+
+.user-gallery__list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.text-center {
+    text-align: center!important;
+}
+
+.user-gallery__list div {
+    margin-left: 15px;
+    padding: 1.5px;
+}
+
+.user-gallery__list img {
+    width: 16%;
+    height: auto;
+    vertical-align: top;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    height: auto;
+    vertical-align: top;
+}
+
+.text-center {
+    text-align: center!important;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+
+@media screen and (max-width: 1524px) {
+    
+
+    div {
+    //   flex: 0 0 49.6666% !important;
+      padding: 1.5px;
+  }
+   img{
+    width: 19% !important;
+  }
+ 
+}
+
+@media screen and (max-width: 1032px) {
+    img{
+        width: 23% !important;
+      }
+}
+@media screen and (max-width: 532px) {
+    img{
+        width: 31% !important;
+      }
+}
+@media screen and (max-width: 450px) {
+    img{
+        width: 47% !important;
+      }
+}
+@media screen and (max-width: 366px) {
+    img{
+        width: 96% !important;
+      }
+}

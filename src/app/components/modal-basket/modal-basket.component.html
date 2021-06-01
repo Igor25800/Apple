@@ -1,0 +1,45 @@
+<section class="basket">
+    <div [class.active]="show"  class="basket-menu" >
+        <div class="basket-top">
+            <div class="content">   
+                <div class="row">
+                    <div class="basket-top__right"></div>  <span>Корзина</span>
+                </div>
+                <div class="basket-top__left" (click)="hideOverlay()"> </div>
+            </div>
+            <div class="cart-modal__item" *ngFor="let item of orders" >
+                <div  class="cart-modal__item-img">
+                    <a (click)="hideOverlay()"  [routerLink]="[ '/category/'+item.category, item.categoryProduct |replacement,item.uuid |lowercase  ]"  routerLinkActive="active1">
+                        <img [src]="item.img" alt="Apple iPhone 12 64GB White">
+                    </a>
+                </div>
+                <div class="cart-modal__item-meta">
+                        <a (click)="hideOverlay()"   [routerLink]="[ '/category/'+item.category, item.categoryProduct |replacement,item.uuid |lowercase  ]">{{item.categoryProduct}} {{item.memory}} {{item.color}}</a>
+                        <div class="cart-modal__item-price">
+                            <span>{{item.count}} </span> $ {{item.price / item.dollarPrice |fixed |kyrs}}
+                            <span class="price-uah">{{item.price | kyrs}} грн<i>*</i></span>
+                        </div>
+                    </div>
+                        <span class="cart-modal__item-remove" data-product-id="184784">
+                            <div class="basket-top__left cross" (click)="deletApple(item)" > </div>
+                        </span>
+                </div>
+                <div class="basket-botom" *ngIf="totalPrice === 0" >
+                    <p class="cart-modal__empty-message">Ви поки нічого не придбали</p>
+                </div>  
+             <div class="info">
+                <div class="basket-botom" *ngIf="totalPrice > 0" >
+            
+                    <p>
+                        <span>Всього :</span> <span >$ {{totalPrice}}</span>
+                    </p>
+                    <button (click)="hideOverlay()" [routerLink]="[ '/basket/']"   class="width" mat-raised-button color="primary">Оформити Замовлення</button>
+                </div>  
+             </div>
+               
+        </div>
+       
+       
+    </div>
+    <div [class.active]="overlay" (click)="hideOverlay()" class="modal-fade modal-trigger modal-close search-fade state-opened"></div>
+</section>

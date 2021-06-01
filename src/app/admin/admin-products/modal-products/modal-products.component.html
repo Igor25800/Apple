@@ -1,0 +1,47 @@
+<form (ngSubmit)="addDetali(formGroupDescriptions.value)" [formGroup]="formGroupDescriptions"  class="example-form">
+    <mat-dialog-content class="mat-typography">
+        <mat-form-field appearance="fill">
+            <mat-label>Select an option</mat-label>
+            <mat-select [(value)]="selected">
+            <mat-option>Виберіть Крітерій</mat-option>
+            <mat-option value="descriptions">Описания</mat-option>
+            <mat-option value="characteristic">Характеристики</mat-option>
+        
+            </mat-select>
+        </mat-form-field>
+
+        <div [ngSwitch]="selected">
+        <div *ngSwitchCase="'descriptions'">
+            <mat-form-field class="example-full-width">
+                <mat-label>Title</mat-label>
+                <input formControlName='title'  matInput  name="title"  >
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width">
+                <mat-label>descriptions</mat-label>
+                <input formControlName='descriptions'  matInput  name="title"  >
+            </mat-form-field>
+
+                
+         <label for="file-uploa" class="custom-file-upload"> Виберіть Картинку </label>
+        <input formControlName='imgDetali'  (change)="uploadFil($event)"  id="file-uploa" type="file"/>
+            <br>
+            <br>
+        <mat-progress-bar #id  mode="determinate" [value]="( upload | async)"></mat-progress-bar> 
+
+        </div>
+        <div *ngSwitchCase="'characteristic'">
+        
+        </div>
+        <div *ngSwitchDefault>
+            <h1>виберіть</h1>
+        </div>
+        </div>
+        
+        <p>You selected: {{selected}}</p>
+    </mat-dialog-content>
+    <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button type="submit" mat-button [mat-dialog-close]="true" cdkFocusInitial>Succses</button>
+    </mat-dialog-actions>
+</form> 

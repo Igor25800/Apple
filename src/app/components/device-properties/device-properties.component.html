@@ -1,0 +1,26 @@
+<form (ngSubmit)="addDetali()" [formGroup]="formGroup"  class="example-form">
+    
+        <mat-form-field appearance="fill"  >
+          <mat-label>Favorite food</mat-label>
+          <mat-select  formControlName="select">
+            <mat-option  *ngFor="let food of arrNav" [value]="food.id">
+              {{food.nameEN}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+</form>
+<form  [formGroup]="form"  class="example-form">  
+
+        <mat-form-field class="example-full-width">
+            <mat-label>label</mat-label>
+            <input type="text"  formControlName="label" matInput  name="price"  >
+        </mat-form-field>
+        <mat-form-field class="example-full-width" >
+            <mat-label>InputEN</mat-label>
+            <input type="text"  formControlName="control" matInput  name="price"  >
+        </mat-form-field>
+  </form>
+    <button (click)="addDetali()"  color="primary" type="submit" mat-raised-button>add</button>
+   
+

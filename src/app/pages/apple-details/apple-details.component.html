@@ -1,0 +1,171 @@
+<div class="container">
+  <nav *ngFor="let item of arrApple; let i=index" class="breadcrumbs" itemscope=""  itemtype="http://schema.org/BreadcrumbList">
+    <div class="nav">
+    <li>
+      <a [routerLink]="['/category/'+item.category]" routerLinkActive="active">
+        <span class="span newSpan" itemprop="name">{{item.category}}</span>
+        <meta itemprop="position" content="2">
+      </a>
+      <i>/</i>
+    </li>
+    <li>
+      <a [routerLink]="['/category/'+item.category+ '/' + item.categoryProduct | lowercase |replacement]"
+        routerLinkActive="active">
+        <span class="span newSpan" itemprop="name">{{item.categoryProduct}}</span>
+        <meta itemprop="position" content="3">
+      </a>
+      <i>/</i>
+    </li>
+    <li>
+      <span class="span newSpan" itemprop="name">{{item.title}} {{item.memory | nameString}} {{item.color}}</span>
+      <meta itemprop="position" content="4">
+    </li>
+  </div>
+    <h1 class="black">{{item.title}} {{item.memory | nameString}} {{item.color}}</h1>
+  </nav>
+
+
+
+
+  <div class="main" *ngFor="let item of arrApple ; let i=index">
+    <div>
+
+    </div>
+    <img [src]="item.img" alt="">
+    <div>
+      <div class="h-product h-product_spacing" *ngIf="item.color">Колір: </div>
+      <form (ngSubmit)="addApple(formGroup.value)" [formGroup]="formGroup">
+
+
+        <mat-radio-group *ngIf="item.color" aria-labelledby="example-radio-group-label" class="example-radio-group"
+          formControlName='radio'>
+          <ng-container *ngFor="let season of arrColor| sort: 'abs' | memory: 'color'">
+            <!-- <mat-radio-button *ngIf="season"  class="example-radio-button"[value]="item.color"  [checked]="item.color === season"   
+                    [routerLink]="['/category/'+item.category+ '/' +item.categoryProduct+  '/' + item.categoryProduct |lowercase | replacement]"
+                 routerLinkActive="active"
+                 [queryParams]="{ memory: item.memory, color: season, categoryProduct:  item.categoryProduct} "
+
+                 > -->
+            <mat-radio-button *ngIf="season.color  " class="example-radio-button" [value]="season.color "
+              [checked]="item.color === season.color"
+              [routerLink]="['/category/'+item.category +'/'+item.categoryProduct +'/'+ season.uuid | replacement |lowercase ]"
+              routerLinkActive="active">
+              {{season.color| titlecase  }}
+            </mat-radio-button>
+          </ng-container>
+
+
+        </mat-radio-group>
+      </form>
+      <div *ngIf="item.memory" class="example-button-row">
+        <div class="h-product h-product_spacing">Пам’ять: </div>
+        <div class="btn-memory">
+        <ng-container *ngFor="let el of arrMemory | sort: '123' | memory: 'memory'">
+          <!-- <button class="nav-link margin" *ngIf="el"  mat-raised-button 
+                    [routerLink]="[ '/category/'+item.category+ '/'+ item.categoryProduct+ '/'+ item.categoryProduct |lowercase | replacement]"
+                    routerLinkActive="active1" 
+                    [queryParams]="{ memory: el, color: item.color, categoryProduct:  item.categoryProduct}"> -->
+           
+            <button class="nav-link margin btn" *ngIf="el.memory" mat-raised-button
+              [routerLink]="[ '/category/'+item.category +'/' +item.categoryProduct +'/'+el.uuid  |lowercase |replacement  ]"
+              routerLinkActive="active1">{{el.memory}}</button>
+          
+        </ng-container>
+      </div>
+
+      </div>
+      <div class="product-info__price">
+        <div class="product-info__price-total">Всього:</div>
+        <div class="price_usd mr-2">
+
+          <span class="usd" data-price="855"> ${{item.price / item.dollarPrice |fixed }}</span>
+        </div>
+        <div class="price_uah">
+          <span class="uah" data-price="23854.5">{{item.price | kyrs}} грн.</span>
+        </div>
+      </div>
+      <div class="buy">
+        <button class="posit" (click)="addProduct(item)" color="primary" mat-raised-button>Купити</button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="product-info__icons d-flex flex-wrap">
+
+
+  </div>
+  <div class="center">
+    <mat-tab-group animationDuration="0ms">
+      <mat-tab class="center" label="ОПИС">
+        <div *ngFor="let item of arrApple">
+          <h5>{{item.description?.title}}</h5>
+          <div class="center">
+            <p class="text">
+              {{item.description?.description}}
+            </p>
+          </div>
+
+          <div class="center">
+            <img class="img" [src]="item.description?.img" alt="">
+          </div>
+        </div>
+
+      </mat-tab>
+      <mat-tab label="Характеристики">
+
+        <table class="features" id="product-features" style=" margin-top: 1.5rem;">
+          <tbody>
+            <ng-container *ngFor="let item of arrApple ">
+              <tr *ngFor="let el of item.detalis |object  | keyvalue">
+                <td class="name"> {{el.key  }} </td>
+                <td class="value" itemprop=""> {{el.value  }} </td>
+              </tr>
+            </ng-container>
+
+
+          </tbody>
+        </table>
+
+
+
+
+
+      </mat-tab>
+      <mat-tab label="Відгуки">
+
+        <form style="overflow: hidden ; margin-top: 1.5rem; display: block;"  [formGroup]="formConnet" >
+          <div class="provider-fields date" data-provider="guest">
+            <p class="review-field">
+              <label>Ім'я</label>
+              <input formControlName='name' type="text" name="name" id="review-name" value="">
+            </p>
+            <p class="review-field">
+              <label for="review-text">Ваш відгук</label>
+              <textarea formControlName='textArea' id="review-text" name="text" rows="10" cols="45"></textarea>
+            </p>
+          </div>
+          <button style="width: 30%;" mat-raised-button color="primary"  (click)="formAdd(formConnet.value)"> Add</button>
+
+
+          
+        </form>
+       
+        
+        <div class="review__bg" style="margin-top: 3rem;" *ngFor="let item of apple | value">
+          <div class="summary">
+            <a href="https://google.com" class="username" itemprop="author" style="margin-right: 1rem;" >{{item.name}}</a>
+            <meta itemprop="itemReviewed" content="Apple iPhone XR 64GB Black">
+            <meta itemprop="datePublished" content="2020-09-25">
+            <span class="date" >{{item.date}}</span>
+          </div>
+          <p itemprop="description">{{item.description}}</p>
+        </div>
+      </mat-tab>
+
+      
+    </mat-tab-group>
+  </div>
+
+</div>

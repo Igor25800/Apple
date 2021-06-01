@@ -1,0 +1,124 @@
+ <table mat-table [dataSource]="arrOrder" multiTemplateDataRows class="mat-elevation-z8 witdh">
+    <!-- <ng-container matColumnDef="{{column}}" *ngFor="let column of columnsToDisplay">
+      <th mat-header-cell *matHeaderCellDef> {{column}} </th>
+      <td mat-cell *matCellDef="let element"> {{element[column]}} </td>
+    </ng-container> -->
+
+    <ng-container matColumnDef="id">
+      <th  mat-header-cell *matHeaderCellDef> id </th>
+      <td mat-cell *matCellDef="let element"> {{element.id }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="userName">
+      <th mat-header-cell *matHeaderCellDef> Імя </th>
+      <td mat-cell *matCellDef="let element"> {{element.userName }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="lastName">
+      <th mat-header-cell *matHeaderCellDef> Прізвище </th>
+      <td mat-cell *matCellDef="let element"> {{element.lastName }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="userPhone">
+      <th mat-header-cell *matHeaderCellDef> Телефон </th>
+      <td mat-cell *matCellDef="let element"> {{element.userPhone }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> email </th>
+      <td mat-cell *matCellDef="let element"> {{element.email }} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="street"  >
+      <th mat-header-cell *matHeaderCellDef> Адресс </th>
+      <ng-container *matCellDef="let element">
+        <span [ngSwitch]="element.menu">
+        <p *ngSwitchCase="'1'">
+          <td mat-cell   > {{element.street.name }} === Наш Магазин </td>
+        </p>
+        <p *ngSwitchCase="'2'">
+          <td mat-cell  > {{element.adress}} === Адресса Дома </td>
+        </p>
+        <p *ngSwitchCase="'3'">
+          <td mat-cell  > {{element.novaCisty}} {{element.novaAddres}}  === Віділленя Нової Пошти </td>
+        </p>
+       
+        </span>
+     
+    </ng-container>
+    </ng-container>
+
+  
+
+ 
+    <ng-container matColumnDef="delete">
+      <th mat-header-cell *matHeaderCellDef> delete </th>
+      <td mat-cell *matCellDef="let element"> 
+        <button  (click)="$event.stopPropagation(); deleteOrder(element)"  mat-raised-button color="warn">Delete</button> 
+    </td>
+    </ng-container>
+
+  
+   
+  
+    <!-- Expanded Content Column - The detail row is made up of this one column that spans across all columns -->
+    <ng-container matColumnDef="expandedDetail">
+      <td mat-cell *matCellDef="let element" [attr.colspan]="columnsToDisplay.length">
+        <div class="example-element-detail di" [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+            <ng-container>
+                <table mat-table [dataSource]="element.orders" class="mat-elevation-z8 witdh">
+
+                    <ng-container matColumnDef="img">
+                      <th mat-header-cell *matHeaderCellDef> Картинка </th>
+                      <td mat-cell *matCellDef="let element" class="row"> 
+                          <img style="height: 50px; width: 50px;" [src]="element.img" alt="">
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="category">
+                        <th mat-header-cell *matHeaderCellDef>  category </th>
+                        <td mat-cell *matCellDef="let element"> {{element.category}} </td>
+                      </ng-container>
+
+                    <ng-container matColumnDef="name">
+                        <th mat-header-cell *matHeaderCellDef> Name </th>
+                        <td mat-cell *matCellDef="let element"> {{element.category}} {{element.categoryProduct}} {{element.memory}} {{element.color}}</td>
+                      </ng-container>
+                  
+                    <ng-container matColumnDef="priceDol">
+                      <th mat-header-cell *matHeaderCellDef> priceUS </th>
+                      <td mat-cell *matCellDef="let element"> ${{element.price / element.dollarPrice|fixed |kyrs}}  </td>
+                    </ng-container> 
+
+                    <ng-container matColumnDef="priceUK">
+                      <th mat-header-cell *matHeaderCellDef> priceUK </th>
+                      <td mat-cell *matCellDef="let element">{{element.price |fixed |kyrs }} грн  </td>
+                    </ng-container> 
+
+                    <ng-container matColumnDef="count">
+                      <th mat-header-cell *matHeaderCellDef> Count </th>
+                      <td mat-cell *matCellDef="let element">{{element.count }}   </td>
+                    </ng-container> 
+
+                    <ng-container matColumnDef="syma">
+                      <th mat-header-cell *matHeaderCellDef> Всього </th>
+                      <td mat-cell *matCellDef="let element"><b>  ${{element.count * element.price / element.dollarPrice|fixed |kyrs}}  </b>    </td>
+                    </ng-container> 
+                  
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                  </table>
+                  
+            </ng-container>
+       
+        </div>
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let element; columns: columnsToDisplay;" class="example-element-row"
+      [class.example-expanded-row]="expandedElement === element"
+      (click)="expandedElement = expandedElement === element ? null : element">
+    </tr>
+    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
+  </table>

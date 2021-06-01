@@ -1,0 +1,37 @@
+table, mat-form-field {
+    width: 100%;
+}
+
+.example-form {
+    min-width: 90%;
+    // max-width: 500px;
+    width: 100%;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.margin{
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+.papa  p:nth-of-type(1) {
+  color: 'red'
+}
+
+.res{
+  background-color: blue;
+}
+

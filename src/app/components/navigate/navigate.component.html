@@ -1,0 +1,8 @@
+<div class="block">
+    <div class="card-apple" *ngFor="let item of arrCategory ; let i=index"  >
+        <a  [routerLink]="['/category/'+ item.category + '/' ,item.title |lowercase |replacement]"  routerLinkActive="active"> 
+            <img  class="img" [src]="item.img" alt="">
+        </a>
+        <p  class="font-title">{{item.title}}</p>
+    </div>
+</div> 

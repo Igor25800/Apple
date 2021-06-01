@@ -1,0 +1,24 @@
+.p-slider.p-slider-horizontal .p-slider-handle {
+    margin-top: -0.5715rem;
+    margin-left: -0.5715rem;
+    height: 20px;
+    width: 20px;
+    background: #fff;
+    border: 1px solid #ebebeb;
+    box-shadow: 0 2px 9px rgb(0 0 0 / 23%);
+}
+
+.p-slider .p-slider-range {
+    background: #ef456a;
+}
+
+.p-slider:not(.p-disabled) .p-slider-handle:hover {
+    background: #f5f5f5;
+    border-color: #ffffff; 
+  }
+
+.p-slider.p-slider-horizontal {
+    width: 65%;
+    height: 0.286rem;
+    margin-bottom: 2rem;
+}

@@ -1,0 +1,253 @@
+.basket{
+    display: flex;
+    justify-content: flex-end;
+  }
+  .basket-menu{
+    position: fixed;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width:  30%;
+    height: 100%;
+    padding: 15px;
+    background-color: #ffffff;
+    transform: translateX(105%);
+    transition: all .3s linear; 
+    display: block;
+    z-index: 18;
+    box-shadow: -5px 0 13px 0 rgb(0 0 0 / 20%);
+  }
+  
+  .basket-menu.active {
+    transform: translateX(0);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 18;
+    
+   
+  }
+
+  .info{
+    position: absolute;
+    bottom: 2rem;
+    width: 92%;
+
+  }
+  
+  .modal-fade.active {
+    background-color: hsla(0,0%,60%,.6);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 15;
+    cursor: pointer;
+    transition: all .2s;
+  }
+
+  .basket-top__right{
+    width: 30px;
+    height: 30px;
+    background-image: url("/assets/images/modal-basket/shopping-bag--v1.png");
+    background-size: 100%, 100%;
+    background-repeat: no-repeat;
+  }
+
+  .basket-top {
+    width: 100%;
+    height: 13%;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  span {
+    margin-left: 1rem;
+    font-size: 1.3rem;
+  }
+
+  .basket-top__left {
+    width: 20px;
+    height: 20px;
+    background-image: url("/assets/images/modal-basket/close.png");
+    background-size: 100%, 100%;
+    background-repeat: no-repeat;
+    align-items: center;
+    cursor: pointer;
+  }
+ 
+  p {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .width{
+    width: 100%;
+  }
+  .content {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3rem;
+  }
+  
+  .cart-modal__item {
+    display: -ms-flexbox;
+    display: flex;
+    padding: 15px;
+    position: relative;
+    padding-right: 30px;
+    width: 100%;
+}
+
+.cart-modal__item-img {
+  position: relative;
+  margin-right: 15px;
+  width: 100px;
+  text-align: center;
+}
+
+.cart-modal__item-img img {
+  max-width: 100%;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+
+.cart-modal__item-price span {
+  font-weight: 400;
+  color: #999;
+  font-size: 12px;
+  margin-right: 5px;
+}
+
+.cart-modal__item-remove {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-226%);
+  right: 20px;
+  width: 20px;
+  text-align: center;
+  font-size: 12px;
+  opacity: .7;
+  cursor: pointer;
+}
+
+.cart-modal__item-price {
+  margin-top: 20px;
+  font-weight: 700;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.cross {
+  width: 12px;
+}
+
+.cart-modal__item-price span.price-uah {
+  display: inline-block!important;
+  color: green;
+  margin-left: 5px;
+}
+
+.cart-modal__empty-message {
+  padding: 30px 20px;
+  color: #666;
+}
+@media all and (max-width: 1200px) {
+  .basket-menu {
+   
+    width: 50%;
+ 
+}
+img {
+  max-width: 82%;
+}
+
+.cart-modal__item-remove {
+  position: absolute;
+  top: 53%;
+  transform: translateY(-226%);
+  right: -12px;
+  width: 20px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+
+}
+
+
+
+
+
+@media all and (max-width: 768px) {
+  .basket-menu {
+   
+    width: 70%;
+ 
+}
+img {
+  max-width: 82%;
+}
+
+.cart-modal__item-remove {
+  position: absolute;
+  top: 53%;
+  transform: translateY(-226%);
+  right: -12px;
+  width: 20px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+
+}
+
+@media all and (max-width: 500px) {
+  .basket-menu {
+    width: 100%;
+}
+}
+
+
+
+@media all and (max-width: 355px) {
+  .basket-menu {
+   
+    width: 100%;
+ 
+}
+img {
+  max-width: 82%;
+}
+
+.cart-modal__item-remove {
+  position: absolute;
+  top: 53%;
+  transform: translateY(-226%);
+  right: -12px;
+  width: 20px;
+  text-align: center;
+  font-size: 12px;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+
+}
