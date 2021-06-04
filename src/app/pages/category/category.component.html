@@ -48,10 +48,21 @@
         <mat-card class="example-card" *ngFor="let item of arrApple; let i=index">
           <mat-card-header>
           </mat-card-header>
+          <div  class="image-list" lazy-load-images >
+            <img  src="../../../assets/images/loader.png" mat-card-image class="width" [attr.data-src]="item.img " alt="">
+            
+          </div>
+          
+          <!-- <div class="image-list" lazy-load-images>
+            <img data-src="../../../assets/images/loader.png">
+          </div> -->
+          
+
           <!-- <mat-spinner [hidden]="hiden"  (load)="img(item.img)"></mat-spinner> -->
-          <!-- <img (load)="hideLoader()"  mat-card-image class="width"  [src]="isLoader ? '../../../assets/images/loader.png' : item.img" alt="Photo of a Shiba Inu"> -->
+          <!-- <img #img   (load)="onLoad(item)" mat-card-image class="width"  [src]="isLoader ? '../../../assets/images/loader.png' : item.img" alt="Photo of a Shiba Inu"> -->
+          <!-- <meta  (load)="onLoad(item)" mat-card-image class="width"  [style.backgroundImage]="'url('+item.img +')'"  alt="Photo of a Shiba Inu" http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" /> -->
           <!-- <img (load)="hideLoader()"  mat-card-image class="width"  [src]="item.img" alt="Photo of a Shiba Inu" [style.backgroundImage]="isLoader ? 'url(../../../assets/images/loader.png)' : ''"> -->
-          <img  mat-card-image class="width"  [src]="item.img" alt="Photo of a Shiba Inu">
+          <!-- <img (load)="img($event.value)"   mat-card-image class="width"  [src]="item.img" alt="Photo of a Shiba Inu"> -->
           <mat-card-content>
           
             <!-- <mat-card-title  

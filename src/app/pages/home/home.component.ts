@@ -6,6 +6,7 @@ import { AppleService } from 'src/app/shared/services/apple/apple.service';
 import { CaruselService } from 'src/app/shared/services/carusel/carusel.service';
 import { GalleryService } from 'src/app/shared/services/gallery.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
+import AOS from 'aos';
 
 
 @Component({
@@ -39,7 +40,7 @@ export class HomeComponent implements OnInit {
       console.log(res);
       
     })
- 
+    AOS.init();
   }
 
   getApple():void {

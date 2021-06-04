@@ -1,7 +1,7 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, HostListener, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { MatSlider, MatSliderChange } from '@angular/material/slider';
-import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import * as EventEmitter from 'node:events';
 import { element } from 'protractor';
 import { IApple } from 'src/app/shared/interfaces/apple.interfaces';
@@ -19,7 +19,7 @@ import { OrderService } from 'src/app/shared/services/order/order.service';
   templateUrl: './category.component.html',
   styleUrls: ['./category.component.scss']
 })
-export class CategoryComponent implements OnInit {
+export class CategoryComponent implements OnInit , OnChanges {
   
 //  characteristics: Array<{[key: string]: string}>
 //  [{option1: 'asdasd'}, {options2: 'asdasd'}]
@@ -30,7 +30,11 @@ export class CategoryComponent implements OnInit {
     max: 2000
   }
 
-  hiden  : boolean = false
+
+
+  @Input()  isLoader: boolean   = true
+ 
+  hiden  : boolean = true
 
   source: MatSlider
   
@@ -40,6 +44,7 @@ export class CategoryComponent implements OnInit {
   arrApple :Array<IApple> = []
   localApple: IApple[] =[]
 
+  img = '../../../assets/images/loader.png'
  
   filterArr = {
     memory: [],
@@ -58,7 +63,7 @@ export class CategoryComponent implements OnInit {
   allApples = [];
   arrDetali: any;
   onlad: any;
-  isLoader: boolean = true;
+ 
 
   constructor(
     private categoryServices: CategoryService,
@@ -71,24 +76,24 @@ export class CategoryComponent implements OnInit {
     this.router.events.subscribe(event =>{
       if(event instanceof NavigationEnd){
         this.get()
-      
-        
-        // this.hideLoader()
-        // console.log('1111');
-        
+        // this.isLoader = true
+        // this.onLoad()
+        // this.onLoad()
+        // window.location.reload()
       }
     })
+
+   
   }
 
-  img(event?){
-    if(event) {
-      this.hiden = true
-      console.log(event);
+  ngOnChanges(): void {
+  //  this.onLoad()
+ 
       
-    }
-    
-    
-    
+  }
+
+  forceReload() {
+   
   }
 
   handleChange({values: [r1, r2]}){
@@ -135,22 +140,33 @@ export class CategoryComponent implements OnInit {
   }
 
   
-  // @HostListener('window:load')
-  // loadImage(e) {
-  //   console.log(e);
+  // @HostListener('window:load', ['$event'])  loadImage(e) {
+  // console.log(e);
+  
+  //  this.isLoader = true;
     
   // }
 
-  hideLoader(event?) {
-    if(event) {
-      this.isLoader = false;
+  // hideLoader() {
+  //   this.isLoader = false;
+  // }
+
+
+
+  onLoad(value?){
+   
+    
+    if(value) {
+      this.isLoader = false
+      // window.location.reload(true)
     }
+  
    
-   
-    
-    
   }
 
+  @HostListener('onload') onClick() {
+    window.alert('Host Element Clicked');
+ }
 
 
   ngOnInit(): void {
@@ -158,20 +174,16 @@ export class CategoryComponent implements OnInit {
     // console.log('22222');
     this.order.$arrOrder.next(this.localApple)
   
-    this.img()
-    console.log('1');
+   
+    // console.log(window.location);
+    
     
     // setTimeout(()=>{
     //   this.rangeValues = [10, 90];
     // }, 5000)
     
     // this.get()
-    const www1 = [{id: 1, name: '111'}, {id: 2, name: '222'}];
-    
-    const obj = {
-      1: {id: 1, name: '111'},
-      2:  {id: 2, name: '222'}
-    }
+ 
     
   }
 

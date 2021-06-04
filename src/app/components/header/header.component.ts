@@ -57,7 +57,9 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-
+  realod(){
+   
+  }
   
 
 
@@ -76,6 +78,7 @@ export class HeaderComponent implements OnInit {
 
   togle(){
     this.hiden = !this.hiden
+   
   }
 
 

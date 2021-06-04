@@ -106,6 +106,8 @@ import { SubscribeComponent } from './components/subscribe/subscribe.component';
 import { MapsNovaComponent } from './components/maps-nova/maps-nova.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component'
 
+import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
+
 
 
 
@@ -199,7 +201,8 @@ import { LoginModalComponent } from './components/login-modal/login-modal.compon
     [CrystalLightboxModule],
     SliderModule,
     GoogleMapsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    LazyLoadImagesModule
 
    
   

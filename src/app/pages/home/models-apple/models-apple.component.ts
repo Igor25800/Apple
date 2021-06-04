@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { IApple } from 'src/app/shared/interfaces/apple.interfaces';
 import { Iphone } from 'src/app/shared/interfaces/iphone-interfaces';
 import { OrderService } from 'src/app/shared/services/order/order.service';
+import AOS from 'aos';
 
 @Component({
   selector: 'app-models-apple',
@@ -21,6 +22,7 @@ export class ModelsAppleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    AOS.init();
   }
 
 

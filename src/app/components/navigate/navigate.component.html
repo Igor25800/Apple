@@ -1,8 +1,10 @@
 <div class="block">
     <div class="card-apple" *ngFor="let item of arrCategory ; let i=index"  >
-        <a  [routerLink]="['/category/'+ item.category + '/' ,item.title |lowercase |replacement]"  routerLinkActive="active"> 
-            <img  class="img" [src]="item.img" alt="">
-        </a>
+        <div class="image-list" lazy-load-images>
+            <a  [routerLink]="['/category/'+ item.category + '/' ,item.title |lowercase |replacement]"  routerLinkActive="active"> 
+                <img src="../../../assets/images/loader.png" class="img" [attr.data-src]="item.img" alt="">
+            </a>
+        </div>
         <p  class="font-title">{{item.title}}</p>
     </div>
 </div> 
