@@ -107,8 +107,9 @@
             </p>
           </div>
 
-          <div class="center">
-            <img class="img" [src]="item.description?.img" alt="">
+          <div class="center" lazy-load-images>
+            <!-- <img class="img" [src]="item.description?.img" alt=""> -->
+            <img  src="../../../assets/images/loader.png" mat-card-image class="img" [attr.data-src]="item.description?.img" alt="">
           </div>
         </div>
 

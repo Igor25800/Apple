@@ -1,7 +1,7 @@
 import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FormBuilder, FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, of } from 'rxjs';
 import { IApple } from 'src/app/shared/interfaces/apple.interfaces';
 import { INavs } from 'src/app/shared/interfaces/category-navs.interfaces';
 import { IDescription } from 'src/app/shared/interfaces/description.interfaces';
@@ -139,7 +139,8 @@ export class DescriptionComponent implements OnInit  {
 
 
     this.isdisabled = false
- 
+    this.img = ''
+    this.uploadProgress = of(0)
     this.uuid = item.uuid
     this.apple = item
   }

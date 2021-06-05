@@ -34,20 +34,19 @@
         <img class="img1"   [style.backgroundImage]="'url('+avatar?.img+')'"     >  
       </article>
     </ng-template>
+    
+    <ng-template #carouselPrev >
+      <div class="click-area">
+        <i class="material-icons">keyboard_arrow_left</i>
+      </div>
+    </ng-template>
+    <ng-template #carouselNext>
+      <div class="click-area">
+        <i class="material-icons">keyboard_arrow_right</i>
+      </div>
+    </ng-template>
 
-
-  <ng-template #carouselPrev>
-    <div class="click-area">
-      <i   class="material-icons">keyboard_arrow_left</i>
-    </div>
-  </ng-template>
-  <ng-template #carouselNext>
-    <div class="click-area">
-      <i  class="material-icons">keyboard_arrow_right</i>
-    </div>
-  </ng-template>
-
-  <ng-template #carouselDot let-model>
+  <ng-template #carouselDot let-model *ngIf="arrCaruser.length > 0">
     <div class="ball bg-accent" 
       [class.visible]="model.index === model.currentIndex"></div>
   </ng-template>
