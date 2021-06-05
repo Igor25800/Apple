@@ -32,7 +32,7 @@ export class NavigateComponent implements OnInit {
     const category = this.routerActivate.snapshot.paramMap.get('category')
     // this.category = category
     this.categoryServices.getCategory().then(res=>{
-      this.arrCategory = res.filter(product =>  product.category === category)
+      this.arrCategory = res.filter(product =>  product.category.trim().replace(/ /g, '-') === category.trim().replace(/ /g, '-'))
     })
   }
 

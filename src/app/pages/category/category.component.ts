@@ -205,7 +205,7 @@ export class CategoryComponent implements OnInit , OnChanges {
 
     if(category) {
       this.appleServices.getApple().then(apple =>{
-        this.arrApple = apple.filter(product =>  product.category.toLowerCase() === category.toLowerCase())
+        this.arrApple = apple.filter(product =>  product.category.trim().replace(/ /g, '-')=== category.trim().replace(/ /g, '-')  )
         this.allApples = this.arrApple;
         this.category = category.replace(/-/g, ' ').toLowerCase()
         // console.log(this.allApples);
@@ -222,7 +222,7 @@ export class CategoryComponent implements OnInit , OnChanges {
 
     if(apple) {
       this.appleServices.getApple().then(apl =>{
-        this.arrApple = apl.filter(el => el.categoryProduct.trim().replace(/ /g, '-').toLowerCase() === apple.toLowerCase())
+        this.arrApple = apl.filter(el => el.categoryProduct.trim().replace(/ /g, '-').toLowerCase() === apple.trim().replace(/ /g, '-')  )
         this.allApples = this.arrApple;
         this.category = apple.replace(/-/g, ' ').toLowerCase();
      

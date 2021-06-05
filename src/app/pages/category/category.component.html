@@ -71,7 +71,7 @@
               [queryParams]="{ memory: item.memory, color: item.color, categoryProduct:  item.categoryProduct}" 
               > -->
             <mat-card-title
-              [routerLink]="[ '/category/'+item.category  ,item.categoryProduct | replacement| lowercase  , item.uuid | lowercase  ]"
+              [routerLink]="[ '/category/'+item.category | replacement| lowercase  ,item.categoryProduct | replacement| lowercase  , item.uuid | lowercase  ]"
               routerLinkActive="active">
               {{item.title}} {{item.memory |nameString}} {{item.color}} </mat-card-title>
             <p class="text"> <b class="text-wigle">$ {{item.price / item.dollarPrice | fixed}}</b> {{item.price |kyrs }}
