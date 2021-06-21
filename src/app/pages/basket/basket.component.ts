@@ -7,6 +7,8 @@ import { Order } from 'src/app/shared/models/order.models';
 import { AppleService } from 'src/app/shared/services/apple/apple.service';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import { mysor } from 'src/app/mysor/mysor'
+import { MatDialog } from '@angular/material/dialog';
+import { SnackBarComponent } from 'src/app/components/snack-bar/snack-bar.component';
 
 @Component({
   selector: 'app-basket',
@@ -41,7 +43,8 @@ export class BasketComponent implements OnInit {
     private orderServices: OrderService,
     private router: Router,
     private formBolider :FormBuilder,
-    private appleServices: AppleService
+    private appleServices: AppleService,
+    public dialog: MatDialog
   
   ) { }
 
@@ -51,6 +54,17 @@ export class BasketComponent implements OnInit {
     this.getloader()
   
     
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(SnackBarComponent, {
+      width: '250px',
+      data: {title: 'Ордер прийнятий'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+  
+    });
   }
 
 
@@ -147,6 +161,10 @@ export class BasketComponent implements OnInit {
     // const find =  this.orderArr.find(el => el).orders.find(el => el)
     if(JSON.parse(localStorage.getItem('basket')).length === 0 ) {
       this.router.navigate(['home' ])
+      setTimeout( () => {
+        this.openDialog()
+      } , 1000)
+     
     }
   
   }

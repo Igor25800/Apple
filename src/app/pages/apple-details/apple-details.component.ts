@@ -9,6 +9,8 @@ import { DetaliService } from 'src/app/shared/services/detali/detali.service';
 import { DescriptionService } from 'src/app/shared/services/description/description.service';
 import { IDescription } from 'src/app/shared/interfaces/description.interfaces';
 import { Comments } from 'src/app/shared/models/comments.models';
+import { MatDialog } from '@angular/material/dialog';
+import { SnackBarComponent } from 'src/app/components/snack-bar/snack-bar.component';
 
 @Component({
   selector: 'app-apple-details',
@@ -49,7 +51,8 @@ export class AppleDetailsComponent implements OnInit {
     private routerActivate: Router,
     private orderServices: OrderService,
     private detaliServices: DetaliService,
-    private descriptionServices : DescriptionService
+    private descriptionServices : DescriptionService,
+    public dialog: MatDialog
   ) {
     this.routerActivate.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -65,6 +68,20 @@ export class AppleDetailsComponent implements OnInit {
    
     
   }
+  
+  openDialog(): void {
+    const dialogRef = this.dialog.open(SnackBarComponent, {
+      width: '250px',
+      data: {title: 'Добавлено в корзину'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      
+    });
+  }
+
+
 
   getDescription () :void {
     this.descriptionServices.getDescription().then(res => {

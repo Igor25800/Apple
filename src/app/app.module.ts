@@ -107,6 +107,7 @@ import { MapsNovaComponent } from './components/maps-nova/maps-nova.component';
 import { LoginModalComponent } from './components/login-modal/login-modal.component'
 
 import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
+import { SnackBarComponent } from './components/snack-bar/snack-bar.component';
 
 
 
@@ -160,6 +161,7 @@ import { LazyLoadImagesModule } from 'ngx-lazy-load-images';
     SubscribeComponent,
     MapsNovaComponent,
     LoginModalComponent,
+    SnackBarComponent,
     
  
        

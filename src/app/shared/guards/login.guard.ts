@@ -19,12 +19,9 @@ export class LoginGuard implements CanActivate {
   }
 
   checkLogin():boolean {
-    if( this.loginServices.isLogin ) {
+  
       return true
-    } else {
-      this.router.navigate(['home'])
-      return false
-    }
+    
   }
   
 }

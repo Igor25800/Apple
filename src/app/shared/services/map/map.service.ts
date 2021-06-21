@@ -7,7 +7,8 @@ export class MapService {
 
     // apiKey = 'AIzaSyDKmK_ZSFQkIEcNMAIB_NlQ4oZcxHnDPPQ';
     // apiKey = 'AIzaSyB4_MiFYsOQRTsDYhbsFqqp-vDSyyLy3x4';
-    apiKey = 'AIzaSyB4_MiFYsOQRTsDYhbsFqqp-vDSyyLy3x4';
+    // apiKey = 'A  IzaSyB4_MiFYsOQRTsDYhbsFqqp-vDSyyLy3x4';
+    apiKey = 'AIzaSyC8r1Rdnau0NpihEJXKEo4EaHwwtNdEQJo';
     mapLocation = { lat:  49.8232878828969, lng: 	24.026186443972122 } //пл.Ринок, 1
  
     // sector1 = [ //прямокутник 1

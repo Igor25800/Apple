@@ -2,7 +2,7 @@
   <nav *ngFor="let item of arrApple; let i=index" class="breadcrumbs" itemscope=""  itemtype="http://schema.org/BreadcrumbList">
     <div class="nav">
     <li>
-      <a [routerLink]="['/category/'+item.category]" routerLinkActive="active">
+      <a [routerLink]="['/category/'+item.category | lowercase |replacement]" routerLinkActive="active">
         <span class="span newSpan" itemprop="name">{{item.category}}</span>
         <meta itemprop="position" content="2">
       </a>
@@ -85,7 +85,7 @@
         </div>
       </div>
       <div class="buy">
-        <button class="posit" (click)="addProduct(item)" color="primary" mat-raised-button>Купити</button>
+        <button class="posit" (click)="addProduct(item) ; openDialog()" color="primary" mat-raised-button>Купити</button>
       </div>
 
     </div>

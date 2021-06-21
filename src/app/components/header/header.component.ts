@@ -6,6 +6,8 @@ import { OrderService } from 'src/app/shared/services/order/order.service';
 import {MatDialog, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { DevicePropertiesComponent } from '../device-properties/device-properties.component';
 import { LoginModalComponent } from '../login-modal/login-modal.component';
+import { LoginService } from 'src/app/shared/services/login/login.service';
+import { Router } from '@angular/router';
 
 
 
@@ -35,6 +37,8 @@ export class HeaderComponent implements OnInit {
     private navServices: NavsService,
     private orderService: OrderService,
     public dialog: MatDialog,
+    public loginServices : LoginService,
+    private router: Router,
     
     
   ){}
@@ -45,16 +49,39 @@ export class HeaderComponent implements OnInit {
     this.loadLocalStorage();
     this.initSubscription();
 
-    
+ 
   }
 
 
   openDialog() {
-    const dialogRef = this.dialog.open(LoginModalComponent);
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    
+     if(this.loginServices.isLogin === false) {
+      const dialogRef = this.dialog.open(LoginModalComponent);
+  
+      dialogRef.afterClosed().subscribe(result => {
+        console.log(`Dialog result: ${result}`);
+      });
+     
+    }
+     
+     else {
+      this.loginServices.isLogin = true
+      this.router.navigate(['admin'])
+
+      
+
+     }
+    
+
+ 
+  
+    
+   
+    
+     
+   
+ 
   }
 
   realod(){

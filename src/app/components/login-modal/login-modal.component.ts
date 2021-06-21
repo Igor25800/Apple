@@ -49,8 +49,12 @@ export class LoginModalComponent implements OnInit {
       this.loginServices.isLogin = true
       this.router.navigate(['admin'])
       this.onNoClick()
+      setTimeout(()=> {
+        this.router.navigate(['home'])
+        this.loginServices.isLogin = false
+      }, 60000 * 5)
   }
-   
+
    
     
   }

@@ -3,6 +3,8 @@ import { IApple } from 'src/app/shared/interfaces/apple.interfaces';
 import { Iphone } from 'src/app/shared/interfaces/iphone-interfaces';
 import { OrderService } from 'src/app/shared/services/order/order.service';
 import AOS from 'aos';
+import { MatDialog } from '@angular/material/dialog';
+import { SnackBarComponent } from 'src/app/components/snack-bar/snack-bar.component';
 
 @Component({
   selector: 'app-models-apple',
@@ -18,11 +20,24 @@ export class ModelsAppleComponent implements OnInit {
   localApple: IApple[] =[]
 
   constructor(
-    private order : OrderService
+    private order : OrderService,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
     AOS.init();
+  }
+
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(SnackBarComponent, {
+      width: '250px',
+      data: {title: 'Добавлено в корзину'}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      
+    });
   }
 
 

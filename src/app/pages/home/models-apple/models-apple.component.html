@@ -15,8 +15,8 @@
                 <mat-card class="example-card" *ngFor="let item of arr; let i=index">
                   <mat-card-header>
                   </mat-card-header>
-                  <div data-aos="fade-up"  data-aos-duration="500" class="image-list" lazy-load-images>
-                    <img src="../../../assets/images/loader.png" mat-card-image class="width" [attr.data-src]="item.img" alt="Photo of a Shiba Inu">
+                  <div  class="image-list" lazy-load-images>
+                    <img data-aos="fade-up"  data-aos-duration="300" data-aos-easing = " easy-in-out "  data-aos-once =" false " src="../../../assets/images/loader.png" mat-card-image class="width" [attr.data-src]="item.img" alt="Photo of a Shiba Inu">
                    </div>
                   <mat-card-content>
                    <mat-card-title  
@@ -26,7 +26,7 @@
                     <p class="text"><b class="text-wigle">$ {{item.price / item.dollarPrice | fixed}}</b>   {{item.price |kyrs }}  грн</p>
                   </mat-card-content>
                   <mat-card-actions class="center">
-                    <button  (click)="localAdd(item)" color="primary" mat-raised-button>Купити</button>
+                    <button  (click)="$event.stopPropagation();   localAdd(item);   openDialog()" color="primary" mat-raised-button>Купити</button>
                   </mat-card-actions>
                 </mat-card>
               </div>

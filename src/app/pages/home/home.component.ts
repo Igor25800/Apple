@@ -41,6 +41,9 @@ export class HomeComponent implements OnInit {
       
     })
     AOS.init();
+
+    
+    
   }
 
   getApple():void {

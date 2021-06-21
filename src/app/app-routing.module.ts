@@ -35,6 +35,7 @@ const routes: Routes = [
     { path: 'products' , component : AdminProductsComponent},
     { path: 'detali' , component : AdminDetaliComponent},
     { path: 'order' , component : AdminOrderComponent},
+   
   ] },
   { path: '**', redirectTo: 'home' },
 ];

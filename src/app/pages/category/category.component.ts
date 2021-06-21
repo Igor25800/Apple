@@ -1,9 +1,11 @@
 import { AfterViewInit, Component, HostListener, Input, OnChanges, OnInit, ViewChild } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatSlider, MatSliderChange } from '@angular/material/slider';
 import { ActivatedRoute, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import * as EventEmitter from 'node:events';
 import { element } from 'protractor';
+import { SnackBarComponent } from 'src/app/components/snack-bar/snack-bar.component';
 import { IApple } from 'src/app/shared/interfaces/apple.interfaces';
 import { ICategory } from 'src/app/shared/interfaces/category.interfaces';
 import { AppleService } from 'src/app/shared/services/apple/apple.service';
@@ -71,7 +73,8 @@ export class CategoryComponent implements OnInit , OnChanges {
     private router :Router,
     private appleServices: AppleService,
     private order : OrderService,
-    private detaliServices :DetaliService
+    private detaliServices :DetaliService,
+    public dialog: MatDialog
   ) { 
     this.router.events.subscribe(event =>{
       if(event instanceof NavigationEnd){
@@ -91,6 +94,21 @@ export class CategoryComponent implements OnInit , OnChanges {
  
       
   }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(SnackBarComponent, {
+      width: '250px',
+      data: {title: 'Добавлено в Корзину'}
+    })
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      // this.animal = result;
+    });
+    
+  }
+
+  
+ 
 
   forceReload() {
    
